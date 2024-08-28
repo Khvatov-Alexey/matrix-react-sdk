@@ -648,9 +648,6 @@
         "subspace_join_rule_public_description": "Cualquiera podrá encontrar y unirse a este espacio, incluso si no forman parte de <SpaceName/>.",
         "subspace_join_rule_restricted_description": "Cualquiera que forme parte de <SpaceName/> podrá encontrar y unirse."
     },
-    "credits": {
-        "default_cover_photo": "La <photo>foto de fondo por defecto</photo> es © <author>Jesús Roncero</author>, usada bajo los términos de la licencia <terms>CC-BY-SA 4.0</terms>."
-    },
     "devtools": {
         "active_widgets": "Accesorios activos",
         "category_other": "Otros",

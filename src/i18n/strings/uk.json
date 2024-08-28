@@ -678,7 +678,6 @@
         "subspace_join_rule_restricted_description": "Будь-хто в <SpaceName/> зможе знайти й приєднатись."
     },
     "credits": {
-        "default_cover_photo": "<photo>Типова світлина обкладинки</photo> від © <author>Jesús Roncero</author> використовується на умовах <terms>CC-BY-SA 4.0</terms>.",
         "twemoji": "Стиль емоджі <twemoji>Twemoji</twemoji> від © <author>Twitter, Inc та інших учасників</author> використовується на умовах <terms>CC-BY 4.0</terms>.",
         "twemoji_colr": "Шрифт <colr>wemoji-colr</colr> від © <author>Mozilla Foundation</author> використовується на умовах <terms>Apache 2.0</terms>."
     },

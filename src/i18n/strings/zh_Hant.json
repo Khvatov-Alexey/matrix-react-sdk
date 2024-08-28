@@ -678,7 +678,6 @@
         "subspace_join_rule_restricted_description": "<SpaceName/> 中的任何人都可以找到並加入。"
     },
     "credits": {
-        "default_cover_photo": "<photo>預設封面照片</photo>作者為 © <author>Jesús Roncero</author>，以 <terms>CC-BY-SA 4.0</terms> 授權使用。",
         "twemoji": "<twemoji>Twemoji</twemoji> 表情符號藝術作者為 © <author>Twitter 公司與其他貢獻者</author>，以 <terms>CC-BY 4.0</terms> 授權使用。",
         "twemoji_colr": "<colr>twemoji-colr</colr> 字型作者為 © <author>Mozilla 基金會</author>，以 <terms>Apache 2.0</terms> 授權使用。"
     },

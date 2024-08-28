@@ -685,7 +685,6 @@
         "subspace_join_rule_restricted_description": "Любой человек в <SpaceName/> сможет найти и присоединиться."
     },
     "credits": {
-        "default_cover_photo": "<photo>По умолчанию на обложке </photo> используется фотография © <author> Jesús Roncero </author> в соответствии с условиями <terms>CC-BY-SA 4.0</terms>.",
         "twemoji": "<twemoji>Изображение смайликов Twemoji</twemoji> © <author> Twitter, Inc и другие авторы </author> используются в соответствии с условиями <terms> CC-BY 4.0</terms>.",
         "twemoji_colr": "<colr>twemoji-colr</colr> шрифт от автора © <author>Mozilla Foundation</author> используется на условиях <terms>Apache 2.0</terms>."
     },

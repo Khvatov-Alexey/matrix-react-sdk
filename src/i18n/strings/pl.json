@@ -725,7 +725,6 @@
         "subspace_join_rule_restricted_description": "Każdy w <SpaceName/> będzie mógł znaleźć i dołączyć."
     },
     "credits": {
-        "default_cover_photo": "Autorem <photo>domyślnego zdjęcia okładkowego</photo> jest <author>Jesús Roncero</author> na licencji <terms>CC-BY-SA 4.0</terms>.",
         "twemoji": "Czcionka <twemoji>Twemoji</twemoji> jest w użyciu na warunkach licencji <terms>CC-BY 4.0</terms>. <author>© Twitter, Inc i pozostali kontrybutorzy</author>.",
         "twemoji_colr": "Czcionka <colr>twemoji-colr</colr> jest w użyciu na warunkach licencji <terms>Apache 2.0</terms>. <author>© Mozilla Foundation</author>."
     },

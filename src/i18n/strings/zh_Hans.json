@@ -651,7 +651,6 @@
         "subspace_join_rule_restricted_description": "<SpaceName/> 中的任何人都可以找到并加入。"
     },
     "credits": {
-        "default_cover_photo": "<photo>默认封面照片</photo> ©<author>Jesús Roncero</author> 根据<terms>CC-BY-SA 4.0</terms> 条款使用。",
         "twemoji": "<twemoji>Twemoji</twemoji> emoji art ©<author>Twitter, Inc 和其他贡献者</author> 根据<terms>CC-BY 4.0</terms> 条款使用。",
         "twemoji_colr": "<colr>twemoji-colr</colr> 字体 ©<author>Mozilla Foundation</author> 根据<terms>Apache 2.0</terms> 条款使用。"
     },

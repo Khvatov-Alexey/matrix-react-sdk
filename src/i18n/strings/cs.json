@@ -691,7 +691,6 @@
         "subspace_join_rule_restricted_description": "Kdokoli v <SpaceName/> ho bude moci najít a připojit se."
     },
     "credits": {
-        "default_cover_photo": "<photo>Výchozí titulní fotografie</photo> je © <author>Jesús Roncero</author> používaná za podmínek <terms>CC-BY-SA 4.0</terms>.",
         "twemoji": "<twemoji>Twemoji</twemoji> emoji grafika je © <author>Twitter, Inc a další přispěvatelé</author> používána za podmínek <terms>CC-BY 4.0</terms>.",
         "twemoji_colr": "Písmo <colr>twemoji-colr</colr> je © <author>Mozilla Foundation</author> používané za podmínek <terms>Apache 2.0</terms>."
     },

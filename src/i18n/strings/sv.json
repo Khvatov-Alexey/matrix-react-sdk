@@ -691,7 +691,6 @@
         "subspace_join_rule_restricted_description": "Vem som helst i <SpaceName/> kommer kunna hitta och gå med."
     },
     "credits": {
-        "default_cover_photo": "Det <photo>förvalda omslagsfotot</photo> är © <author>Jesús Roncero</author> och används under villkoren i <terms>CC-BY-SA 4.0</terms>.",
         "twemoji": "Emojigrafiken <twemoji>Twemoji</twemoji> är © <author>Twitter, Inc och andra bidragsgivare</author> och används under villkoren i <terms>CC-BY 4.0</terms>.",
         "twemoji_colr": "Teckensnittet <colr>twemoji-colr</colr> är © <author>Mozilla Foundation</author> och används under villkoren för <terms>Apache 2.0</terms>."
     },

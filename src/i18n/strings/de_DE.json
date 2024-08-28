@@ -686,7 +686,6 @@
         "subspace_join_rule_restricted_description": "Mitglieder von <SpaceName/> können diesen Space finden und betreten."
     },
     "credits": {
-        "default_cover_photo": "Das <photo>Standard-Titelbild</photo> ist © <author>Jesús Roncero</author> und wird unter den Bedingungen von <terms>CC-BY-SA 4.0</terms> verwendet.",
         "twemoji": "Die <twemoji>Twemoji</twemoji>-Emojis sind © <author>Twitter, Inc und weitere Mitwirkende</author> und wird unter den Bedingungen von <terms>CC-BY 4.0</terms> verwendet.",
         "twemoji_colr": "Die Schriftart <colr>twemoji-colr</colr> ist © <author>Mozilla Foundation</author> und wird unter den Bedingungen von <terms>Apache 2.0</terms> verwendet."
     },

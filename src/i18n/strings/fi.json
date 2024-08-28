@@ -640,7 +640,6 @@
         "subspace_join_rule_restricted_description": "Kuka tahansa avaruudessa <SpaceName/> voi löytää ja liittyä."
     },
     "credits": {
-        "default_cover_photo": "<photo>Oletuskansikuva</photo> © <author>Jesús Roncero</author>, käytössä <terms>CC-BY-SA 4.0</terms>:n ehtojen mukaisesti.",
         "twemoji_colr": "<colr>twemoji-colr</colr>-fontti © <author>Mozilla Foundation</author>, käytössä <terms>Apache 2.0</terms>:n ehtojen mukaisesti."
     },
     "devtools": {
