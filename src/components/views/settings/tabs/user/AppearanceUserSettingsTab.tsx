@@ -74,8 +74,6 @@ export default class AppearanceUserSettingsTab extends React.Component<IProps, I
             const tooltipContent = _t("settings|appearance|custom_font_description", { brand });
             advanced = (
                 <>
-                    <SettingsFlag name="useCompactLayout" level={SettingLevel.DEVICE} useCheckbox={true} />
-
                     <SettingsFlag
                         name="useBundledEmojiFont"
                         level={SettingLevel.DEVICE}
