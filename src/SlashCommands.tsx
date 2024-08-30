@@ -608,6 +608,8 @@ export const Commands = [
             return success();
         },
         category: CommandCategories.advanced,
+        hideCompletionAfterSpace: false,
+        isEnabled: () => false,
     }),
     new Command({
         command: "addwidget",
