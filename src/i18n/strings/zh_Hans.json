@@ -2316,7 +2316,7 @@
             "surround_text": "输入特殊字符时圈出选定的文本",
             "time_heading": "显示的时间戳"
         },
-        "prompt_invite": "在发送邀请之前提示可能无效的 Matrix ID",
+        "prompt_invite": "在发送邀请之前提示可能无效的 ID",
         "replace_plain_emoji": "自动取代纯文本为表情符号",
         "security": {
             "4s_public_key_in_account_data": "在账户数据中",

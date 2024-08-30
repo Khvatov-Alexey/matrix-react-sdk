@@ -2360,7 +2360,7 @@
             "surround_text": "特殊な文字の入力中に、選択した文章を囲む",
             "time_heading": "表示時刻"
         },
-        "prompt_invite": "不正の可能性があるMatrix IDに招待を送信する前に確認",
+        "prompt_invite": "不正の可能性があるIDに招待を送信する前に確認",
         "replace_plain_emoji": "自動的にプレーンテキストの絵文字を置き換える",
         "security": {
             "4s_public_key_in_account_data": "アカウントデータ内",

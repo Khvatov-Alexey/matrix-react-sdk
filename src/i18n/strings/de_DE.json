@@ -2583,7 +2583,7 @@
             "surround_text": "Sonderzeichen automatisch vor und hinter Textauswahl setzen",
             "time_heading": "Zeitanzeige"
         },
-        "prompt_invite": "Warnen, bevor du Einladungen zu ungültigen Matrix-IDs sendest",
+        "prompt_invite": "Warnen, bevor du Einladungen zu ungültigen IDs sendest",
         "replace_plain_emoji": "Klartext-Emoji automatisch ersetzen",
         "security": {
             "4s_public_key_in_account_data": "in den Kontodaten",

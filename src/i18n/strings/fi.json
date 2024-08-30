@@ -2245,7 +2245,7 @@
             "show_polls_button": "Näytä kyselypainike",
             "time_heading": "Ajan näyttäminen"
         },
-        "prompt_invite": "Kysy varmistus ennen kutsujen lähettämistä mahdollisesti epäkelpoihin Matrix ID:hin",
+        "prompt_invite": "Kysy varmistus ennen kutsujen lähettämistä mahdollisesti epäkelpoihin ID:hin",
         "replace_plain_emoji": "Korvaa automaattisesti teksimuotoiset emojit",
         "security": {
             "4s_public_key_in_account_data": "tilin tiedoissa",

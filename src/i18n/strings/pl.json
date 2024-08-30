@@ -2701,7 +2701,7 @@
             "surround_text": "Otocz zaznaczony tekst podczas wpisywania specjalnych znaków",
             "time_heading": "Wyświetlanie czasu"
         },
-        "prompt_invite": "Powiadamiaj przed wysłaniem zaproszenia do potencjalnie nieprawidłowych ID matrix",
+        "prompt_invite": "Powiadamiaj przed wysłaniem zaproszenia do potencjalnie nieprawidłowych ID",
         "replace_plain_emoji": "Automatycznie zastępuj tekstowe emotikony",
         "security": {
             "4s_public_key_in_account_data": "w danych konta",

@@ -2422,7 +2422,7 @@
             "surround_text": "Rrethoje tekstin e përzgjedhur, kur shtypen shenja speciale",
             "time_heading": "Kohë shfaqjeje"
         },
-        "prompt_invite": "Pyet, përpara se të dërgohen ftesa te ID Matrix potencialisht të pavlefshme",
+        "prompt_invite": "Pyet, përpara se të dërgohen ftesa te ID potencialisht të pavlefshme",
         "replace_plain_emoji": "Zëvendëso automatikisht emotikone tekst të thjeshtë me Emoji",
         "security": {
             "4s_public_key_in_account_data": "në të dhëna llogarie",

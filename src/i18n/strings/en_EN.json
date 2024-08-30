@@ -2712,7 +2712,7 @@
             "surround_text": "Surround selected text when typing special characters",
             "time_heading": "Displaying time"
         },
-        "prompt_invite": "Prompt before sending invites to potentially invalid matrix IDs",
+        "prompt_invite": "Prompt before sending invites to potentially invalid IDs",
         "replace_plain_emoji": "Automatically replace plain text Emoji",
         "security": {
             "4s_public_key_in_account_data": "in account data",

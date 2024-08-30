@@ -2525,7 +2525,7 @@
             "surround_text": "輸入特殊字元時，圍繞選取的文字",
             "time_heading": "顯示時間"
         },
-        "prompt_invite": "在傳送邀請給潛在的無效 Matrix ID 前提示",
+        "prompt_invite": "在傳送邀請給潛在的無效 ID 前提示",
         "replace_plain_emoji": "自動取代純文字為表情符號",
         "security": {
             "4s_public_key_in_account_data": "在帳號資料中",

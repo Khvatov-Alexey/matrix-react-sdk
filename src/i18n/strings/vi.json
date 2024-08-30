@@ -2297,7 +2297,7 @@
             "surround_text": "Bao quanh văn bản đã chọn khi nhập các ký tự đặc biệt",
             "time_heading": "Thời gian hiển thị"
         },
-        "prompt_invite": "Nhắc trước khi gửi lời mời đến các ID Matrix có khả năng không hợp lệ",
+        "prompt_invite": "Nhắc trước khi gửi lời mời đến các ID có khả năng không hợp lệ",
         "replace_plain_emoji": "Tự động thay thế hình biểu tượng",
         "security": {
             "4s_public_key_in_account_data": "trong dữ liệu tài khoản",

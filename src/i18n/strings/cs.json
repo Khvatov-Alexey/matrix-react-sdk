@@ -2604,7 +2604,7 @@
             "surround_text": "Ohraničit označený text při psaní speciálních znaků",
             "time_heading": "Zobrazování času"
         },
-        "prompt_invite": "Potvrdit odeslání pozvánky potenciálně neplatným Matrix ID",
+        "prompt_invite": "Potvrdit odeslání pozvánky potenciálně neplatným ID",
         "replace_plain_emoji": "Automaticky nahrazovat textové emoji",
         "security": {
             "4s_public_key_in_account_data": "v datech účtu",

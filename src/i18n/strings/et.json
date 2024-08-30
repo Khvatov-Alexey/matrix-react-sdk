@@ -2565,7 +2565,7 @@
             "surround_text": "Erimärkide sisestamisel märgista valitud tekst",
             "time_heading": "Aegade kuvamine"
         },
-        "prompt_invite": "Hoiata enne kutse saatmist võimalikule vigasele Matrix'i kasutajatunnusele",
+        "prompt_invite": "Hoiata enne kutse saatmist võimalikule vigasele kasutajatunnusele",
         "replace_plain_emoji": "Automaatelt asenda vormindamata tekst emotikoniga",
         "security": {
             "4s_public_key_in_account_data": "kasutajakonto andmete hulgas",

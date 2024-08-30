@@ -2363,7 +2363,7 @@
             "surround_text": "Rodear texto seleccionado al escribir caracteres especiales",
             "time_heading": "Fecha y hora"
         },
-        "prompt_invite": "Preguntarme antes de enviar invitaciones a IDs de matrix que no parezcan válidas",
+        "prompt_invite": "Preguntarme antes de enviar invitaciones a IDs que no parezcan válidas",
         "replace_plain_emoji": "Sustituir automáticamente caritas de texto por sus emojis equivalentes",
         "security": {
             "4s_public_key_in_account_data": "en datos de cuenta",

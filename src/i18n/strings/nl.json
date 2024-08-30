@@ -2190,7 +2190,7 @@
             "surround_text": "Geselecteerde tekst omsluiten bij het typen van speciale tekens",
             "time_heading": "Tijdsweergave"
         },
-        "prompt_invite": "Uitnodigingen naar mogelijk ongeldige Matrix-ID’s bevestigen",
+        "prompt_invite": "Uitnodigingen naar mogelijk ongeldige ID’s bevestigen",
         "replace_plain_emoji": "Tekst automatisch vervangen door emoji",
         "security": {
             "4s_public_key_in_account_data": "in accountinformatie",

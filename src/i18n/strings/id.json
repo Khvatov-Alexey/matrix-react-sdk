@@ -2558,7 +2558,7 @@
             "surround_text": "Kelilingi teks yang dipilih saat mengetik karakter khusus",
             "time_heading": "Tampilkan waktu"
         },
-        "prompt_invite": "Tanyakan sebelum mengirim undangan ke ID Matrix yang mungkin tidak absah",
+        "prompt_invite": "Tanyakan sebelum mengirim undangan ke ID yang mungkin tidak absah",
         "replace_plain_emoji": "Ganti emoji teks biasa secara otomatis",
         "security": {
             "4s_public_key_in_account_data": "di data akun",

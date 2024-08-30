@@ -2634,7 +2634,7 @@
             "surround_text": "Entourer le texte sélectionné lors de la saisie de certains caractères",
             "time_heading": "Affichage de l’heure"
         },
-        "prompt_invite": "Demander avant d’envoyer des invitations à des identifiants matrix potentiellement non valides",
+        "prompt_invite": "Demander avant d’envoyer des invitations à des identifiants potentiellement non valides",
         "replace_plain_emoji": "Remplacer automatiquement le texte par des émojis",
         "security": {
             "4s_public_key_in_account_data": "dans les données du compte",

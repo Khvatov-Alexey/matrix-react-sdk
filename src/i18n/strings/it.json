@@ -2600,7 +2600,7 @@
             "surround_text": "Circonda il testo selezionato quando si digitano caratteri speciali",
             "time_heading": "Visualizzazione dell'ora"
         },
-        "prompt_invite": "Chiedi prima di inviare inviti a possibili ID matrix non validi",
+        "prompt_invite": "Chiedi prima di inviare inviti a possibili ID non validi",
         "replace_plain_emoji": "Sostituisci automaticamente le emoji testuali",
         "security": {
             "4s_public_key_in_account_data": "nei dati dell'account",

@@ -2599,7 +2599,7 @@
             "surround_text": "Inneslut valt text vid skrivning av specialtecken",
             "time_heading": "Tidvisning"
         },
-        "prompt_invite": "Fråga innan inbjudningar skickas till potentiellt ogiltiga Matrix-ID:n",
+        "prompt_invite": "Fråga innan inbjudningar skickas till potentiellt ogiltiga ID:n",
         "replace_plain_emoji": "Ersätt automatiskt textemotikoner med emojier",
         "security": {
             "4s_public_key_in_account_data": "i kontodata",

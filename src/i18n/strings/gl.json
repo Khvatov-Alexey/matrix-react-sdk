@@ -2192,7 +2192,7 @@
             "surround_text": "Rodea o texto seleccionado ao escribir caracteres especiais",
             "time_heading": "Mostrar hora"
         },
-        "prompt_invite": "Avisar antes de enviar convites a IDs de Matrix potencialmente incorrectos",
+        "prompt_invite": "Avisar antes de enviar convites a IDs de potencialmente incorrectos",
         "replace_plain_emoji": "Substituír automaticamente Emoji en texto plano",
         "security": {
             "4s_public_key_in_account_data": "nos datos da conta",

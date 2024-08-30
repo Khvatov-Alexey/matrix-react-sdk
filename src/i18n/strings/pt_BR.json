@@ -1765,7 +1765,7 @@
             "surround_text": "Circule o texto selecionado ao digitar caracteres especiais",
             "time_heading": "Exibindo tempo"
         },
-        "prompt_invite": "Avisar antes de enviar convites para IDs da Matrix potencialmente inválidas",
+        "prompt_invite": "Avisar antes de enviar convites para IDs potencialmente inválidas",
         "replace_plain_emoji": "Substituir automaticamente os emojis em texto",
         "security": {
             "4s_public_key_in_account_data": "nos dados de conta",

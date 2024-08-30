@@ -2587,7 +2587,7 @@
             "surround_text": "Obklopiť vybraný text pri písaní špeciálnych znakov",
             "time_heading": "Zobrazovanie času"
         },
-        "prompt_invite": "Upozorniť pred odoslaním pozvánok na potenciálne neplatné Matrix ID",
+        "prompt_invite": "Upozorniť pred odoslaním pozvánok na potenciálne neplatné ID",
         "replace_plain_emoji": "Automaticky nahrádzať textové emotikony modernými",
         "security": {
             "4s_public_key_in_account_data": "v údajoch účtu",

@@ -2076,7 +2076,7 @@
             "surround_text": "Umlykja valinn texta þegar sértákn eru skrifuð",
             "time_heading": "Birting tíma"
         },
-        "prompt_invite": "Spyrja áður en boð eru send á mögulega ógild matrix-auðkenni",
+        "prompt_invite": "Spyrja áður en boð eru send á mögulega ógild auðkenni",
         "replace_plain_emoji": "Skipta sjálfkrafa út Emoji-táknum á hreinum texta",
         "security": {
             "4s_public_key_in_account_data": "í gögnum notandaaðgangs",

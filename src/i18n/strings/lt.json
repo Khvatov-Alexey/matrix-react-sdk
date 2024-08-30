@@ -1667,7 +1667,7 @@
             "surround_text": "Apvesti pasirinktą tekstą rašant specialiuosius simbolius",
             "time_heading": "Rodomas laikas"
         },
-        "prompt_invite": "Klausti prieš siunčiant pakvietimus galimai netinkamiems matrix ID",
+        "prompt_invite": "Klausti prieš siunčiant pakvietimus galimai netinkamiems ID",
         "replace_plain_emoji": "Automatiškai pakeisti paprasto teksto Jaustukus",
         "security": {
             "4s_public_key_in_account_data": "paskyros duomenyse",

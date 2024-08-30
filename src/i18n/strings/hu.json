@@ -2525,7 +2525,7 @@
             "surround_text": "Kijelölt szöveg körülvétele speciális karakterek beírásakor",
             "time_heading": "Idő megjelenítése"
         },
-        "prompt_invite": "Kérdés a vélhetően hibás Matrix-azonosítóknak küldött meghívók elküldése előtt",
+        "prompt_invite": "Kérdés a vélhetően hibás azonosítóknak küldött meghívók elküldése előtt",
         "replace_plain_emoji": "Egyszerű szöveg automatikus cseréje emodzsira",
         "security": {
             "4s_public_key_in_account_data": "fiókadatokban",

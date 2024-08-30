@@ -1856,7 +1856,7 @@
             "surround_text": "Ĉirkaŭi elektitan tekston dum tajpado de specialaj signoj",
             "time_heading": "Montrado de tempo"
         },
-        "prompt_invite": "Averti antaŭ ol sendi invitojn al eble nevalidaj Matrix-identigiloj",
+        "prompt_invite": "Averti antaŭ ol sendi invitojn al eble nevalidaj identigiloj",
         "replace_plain_emoji": "Memfare anstataŭigi tekstajn mienetojn",
         "security": {
             "4s_public_key_in_account_data": "en datumoj de konto",
