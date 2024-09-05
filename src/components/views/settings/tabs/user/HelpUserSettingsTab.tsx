@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import React, { ReactNode } from "react";
+import React/*, { ReactNode }*/ from "react";
 import { logger } from "matrix-js-sdk/src/logger";
 
 import AccessibleButton from "../../../elements/AccessibleButton";
@@ -93,25 +93,25 @@ export default class HelpUserSettingsTab extends React.Component<IProps, IState>
         Modal.createDialog(BugReportDialog, {});
     };
 
-    private renderLegal(): ReactNode {
-        const tocLinks = SdkConfig.get().terms_and_conditions_links;
-        if (!tocLinks) return null;
+    // private renderLegal(): ReactNode {
+    //     const tocLinks = SdkConfig.get().terms_and_conditions_links;
+    //     if (!tocLinks) return null;
 
-        const legalLinks: JSX.Element[] = [];
-        for (const tocEntry of tocLinks) {
-            legalLinks.push(
-                <div key={tocEntry.url}>
-                    <ExternalLink href={tocEntry.url}>{tocEntry.text}</ExternalLink>
-                </div>,
-            );
-        }
+    //     const legalLinks: JSX.Element[] = [];
+    //     for (const tocEntry of tocLinks) {
+    //         legalLinks.push(
+    //             <div key={tocEntry.url}>
+    //                 <ExternalLink href={tocEntry.url}>{tocEntry.text}</ExternalLink>
+    //             </div>,
+    //         );
+    //     }
 
-        return (
-            <SettingsSubsection heading={_t("common|legal")}>
-                <SettingsSubsectionText>{legalLinks}</SettingsSubsectionText>
-            </SettingsSubsection>
-        );
-    }
+    //     return (
+    //         <SettingsSubsection heading={_t("common|legal")}>
+    //             <SettingsSubsectionText>{legalLinks}</SettingsSubsectionText>
+    //         </SettingsSubsection>
+    //     );
+    // }
 
     private renderCredits(): JSX.Element {
         // Note: This is not translated because it is legal text.
@@ -182,17 +182,17 @@ export default class HelpUserSettingsTab extends React.Component<IProps, IState>
     };
 
     public render(): React.ReactNode {
-        const brand = SdkConfig.get().brand;
+        // const brand = SdkConfig.get().brand;
 
-        const faqText = _t(
-            "setting|help_about|help_link",
-            {
-                brand,
-            },
-            {
-                a: (sub) => <ExternalLink href={SdkConfig.get("help_url")}>{sub}</ExternalLink>,
-            },
-        );
+        // const faqText = _t(
+        //     "setting|help_about|help_link",
+        //     {
+        //         brand,
+        //     },
+        //     {
+        //         a: (sub) => <ExternalLink href={SdkConfig.get("help_url")}>{sub}</ExternalLink>,
+        //     },
+        // );
 
         let updateButton: JSX.Element | undefined;
         if (this.state.canUpdate) {
