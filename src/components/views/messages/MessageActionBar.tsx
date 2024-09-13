@@ -24,6 +24,9 @@ import {
     MsgType,
     RelationType,
     M_BEACON_INFO,
+    EventTimeline,
+    RoomStateEvent,
+    EventType,
 } from "matrix-js-sdk/src/matrix";
 import classNames from "classnames";
 import { Icon as PinIcon } from "@vector-im/compound-design-tokens/icons/pin.svg";
@@ -64,6 +67,7 @@ import { GetRelationsForEvent, IEventTileType } from "../rooms/EventTile";
 import { VoiceBroadcastInfoEventType } from "../../../voice-broadcast/types";
 import { ButtonEvent } from "../elements/AccessibleButton";
 import PinningUtils from "../../../utils/PinningUtils";
+import PosthogTrackers from "../../../PosthogTrackers.ts";
 
 interface IOptionsButtonProps {
     mxEvent: MatrixEvent;
@@ -278,12 +282,20 @@ export default class MessageActionBar extends React.PureComponent<IMessageAction
             this.props.mxEvent.once(MatrixEventEvent.Decrypted, this.onDecrypted);
         }
         this.props.mxEvent.on(MatrixEventEvent.BeforeRedaction, this.onBeforeRedaction);
+        this.context.room
+            ?.getLiveTimeline()
+            .getState(EventTimeline.FORWARDS)
+            ?.on(RoomStateEvent.Events, this.onRoomEvent);
     }
 
     public componentWillUnmount(): void {
         this.props.mxEvent.off(MatrixEventEvent.Status, this.onSent);
         this.props.mxEvent.off(MatrixEventEvent.Decrypted, this.onDecrypted);
         this.props.mxEvent.off(MatrixEventEvent.BeforeRedaction, this.onBeforeRedaction);
+        this.context.room
+            ?.getLiveTimeline()
+            .getState(EventTimeline.FORWARDS)
+            ?.off(RoomStateEvent.Events, this.onRoomEvent);
     }
 
     private onDecrypted = (): void => {
@@ -294,6 +306,12 @@ export default class MessageActionBar extends React.PureComponent<IMessageAction
 
     private onBeforeRedaction = (): void => {
         // When an event is redacted, we can't edit it so update the available actions.
+        this.forceUpdate();
+    };
+
+    private onRoomEvent = (event?: MatrixEvent): void => {
+        // If the event is pinned or unpinned, rerender the component.
+        if (!event || event.getType() !== EventType.RoomPinnedEvents) return;
         this.forceUpdate();
     };
 
@@ -390,12 +408,13 @@ export default class MessageActionBar extends React.PureComponent<IMessageAction
     /**
      * Pin or unpin the event.
      */
-    private onPinClick = async (event: ButtonEvent): Promise<void> => {
+    private onPinClick = async (event: ButtonEvent, isPinned: boolean): Promise<void> => {
         // Don't open the regular browser or our context menu on right-click
         event.preventDefault();
         event.stopPropagation();
 
         await PinningUtils.pinOrUnpinEvent(MatrixClientPeg.safeGet(), this.props.mxEvent);
+        PosthogTrackers.trackPinUnpinMessage(isPinned ? "Pin" : "Unpin", "Timeline");
     };
 
     public render(): React.ReactNode {
@@ -415,14 +434,17 @@ export default class MessageActionBar extends React.PureComponent<IMessageAction
             );
         }
 
-        if (PinningUtils.canPinOrUnpin(MatrixClientPeg.safeGet(), this.props.mxEvent)) {
+        if (
+            PinningUtils.canPin(MatrixClientPeg.safeGet(), this.props.mxEvent) ||
+            PinningUtils.canUnpin(MatrixClientPeg.safeGet(), this.props.mxEvent)
+        ) {
             const isPinned = PinningUtils.isPinned(MatrixClientPeg.safeGet(), this.props.mxEvent);
             toolbarOpts.push(
                 <RovingAccessibleButton
                     className="mx_MessageActionBar_iconButton"
                     title={isPinned ? _t("action|unpin") : _t("action|pin")}
-                    onClick={this.onPinClick}
-                    onContextMenu={this.onPinClick}
+                    onClick={(e) => this.onPinClick(e, isPinned)}
+                    onContextMenu={(e: ButtonEvent) => this.onPinClick(e, isPinned)}
                     key="pin"
                     placement="left"
                 >

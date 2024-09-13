@@ -47,6 +47,7 @@ import { ViewRoomOpts } from "@matrix-org/react-sdk-module-api/lib/lifecycles/Ro
 
 import shouldHideEvent from "../../shouldHideEvent";
 import { _t } from "../../languageHandler";
+import * as TimezoneHandler from "../../TimezoneHandler";
 import { RoomPermalinkCreator } from "../../utils/permalinks/Permalinks";
 import ResizeNotifier from "../../utils/ResizeNotifier";
 import ContentMessages from "../../ContentMessages";
@@ -133,6 +134,7 @@ import { SubmitAskToJoinPayload } from "../../dispatcher/payloads/SubmitAskToJoi
 import RightPanelStore from "../../stores/right-panel/RightPanelStore";
 import { onView3pidInvite } from "../../stores/right-panel/action-handlers";
 import RoomSearchAuxPanel from "../views/rooms/RoomSearchAuxPanel";
+import { PinnedMessageBanner } from "../views/rooms/PinnedMessageBanner";
 
 const DEBUG = false;
 const PREVENT_MULTIPLE_JITSI_WITHIN = 30_000;
@@ -227,6 +229,7 @@ export interface IRoomState {
     lowBandwidth: boolean;
     alwaysShowTimestamps: boolean;
     showTwelveHourTimestamps: boolean;
+    userTimezone: string | undefined;
     readMarkerInViewThresholdMs: number;
     readMarkerOutOfViewThresholdMs: number;
     showHiddenEvents: boolean;
@@ -454,6 +457,7 @@ export class RoomView extends React.Component<IRoomProps, IRoomState> {
             lowBandwidth: SettingsStore.getValue("lowBandwidth"),
             alwaysShowTimestamps: SettingsStore.getValue("alwaysShowTimestamps"),
             showTwelveHourTimestamps: SettingsStore.getValue("showTwelveHourTimestamps"),
+            userTimezone: TimezoneHandler.getUserTimezone(),
             readMarkerInViewThresholdMs: SettingsStore.getValue("readMarkerInViewThresholdMs"),
             readMarkerOutOfViewThresholdMs: SettingsStore.getValue("readMarkerOutOfViewThresholdMs"),
             showHiddenEvents: SettingsStore.getValue("showHiddenEventsInTimeline"),
@@ -510,6 +514,9 @@ export class RoomView extends React.Component<IRoomProps, IRoomState> {
             ),
             SettingsStore.watchSetting("showTwelveHourTimestamps", null, (...[, , , value]) =>
                 this.setState({ showTwelveHourTimestamps: value as boolean }),
+            ),
+            SettingsStore.watchSetting(TimezoneHandler.USER_TIMEZONE_KEY, null, (...[, , , value]) =>
+                this.setState({ userTimezone: value as string }),
             ),
             SettingsStore.watchSetting("readMarkerInViewThresholdMs", null, (...[, , , value]) =>
                 this.setState({ readMarkerInViewThresholdMs: value as number }),
@@ -2409,6 +2416,14 @@ export class RoomView extends React.Component<IRoomProps, IRoomState> {
             </AuxPanel>
         );
 
+        const isPinningEnabled = SettingsStore.getValue<boolean>("feature_pinning");
+        let pinnedMessageBanner;
+        if (isPinningEnabled) {
+            pinnedMessageBanner = (
+                <PinnedMessageBanner room={this.state.room} permalinkCreator={this.permalinkCreator} />
+            );
+        }
+
         let messageComposer;
         const showComposer =
             // joined and not showing search results
@@ -2537,6 +2552,7 @@ export class RoomView extends React.Component<IRoomProps, IRoomState> {
                             <Measured sensor={this.roomViewBody.current} onMeasurement={this.onMeasurement} />
                         )}
                         {auxPanel}
+                        {pinnedMessageBanner}
                         <main className={timelineClasses}>
                             <FileDropTarget parent={this.roomView.current} onFileDrop={this.onFileDrop} />
                             {topUnreadMessagesBar}

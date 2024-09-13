@@ -20,7 +20,7 @@ import { mocked } from "jest-mock";
 import { createTestClient } from "../test-utils";
 import PinningUtils from "../../src/utils/PinningUtils";
 import SettingsStore from "../../src/settings/SettingsStore";
-import { canPinEvent, isContentActionable } from "../../src/utils/EventUtils";
+import { isContentActionable } from "../../src/utils/EventUtils";
 import { ReadPinsEventId } from "../../src/components/views/right_panel/types";
 
 jest.mock("../../src/utils/EventUtils", () => {
@@ -35,7 +35,6 @@ describe("PinningUtils", () => {
     const userId = "@alice:example.org";
 
     const mockedIsContentActionable = mocked(isContentActionable);
-    const mockedCanPinEvent = mocked(canPinEvent);
 
     let matrixClient: MatrixClient;
     let room: Room;
@@ -63,7 +62,6 @@ describe("PinningUtils", () => {
         // Enable feature pinning
         jest.spyOn(SettingsStore, "getValue").mockReturnValue(true);
         mockedIsContentActionable.mockImplementation(() => true);
-        mockedCanPinEvent.mockImplementation(() => true);
 
         matrixClient = createTestClient();
         room = new Room(roomId, matrixClient, userId);
@@ -75,15 +73,27 @@ describe("PinningUtils", () => {
         ).mockReturnValue(true);
     });
 
-    describe("isPinnable", () => {
+    describe("isUnpinnable", () => {
         test.each(PinningUtils.PINNABLE_EVENT_TYPES)("should return true for pinnable event types", (eventType) => {
             const event = makePinEvent({ type: eventType });
-            expect(PinningUtils.isPinnable(event)).toBe(true);
+            expect(PinningUtils.isUnpinnable(event)).toBe(true);
         });
 
         test("should return false for a non pinnable event type", () => {
             const event = makePinEvent({ type: EventType.RoomCreate });
-            expect(PinningUtils.isPinnable(event)).toBe(false);
+            expect(PinningUtils.isUnpinnable(event)).toBe(false);
+        });
+
+        test("should return true for a redacted event", () => {
+            const event = makePinEvent({ unsigned: { redacted_because: "because" as unknown as IEvent } });
+            expect(PinningUtils.isUnpinnable(event)).toBe(true);
+        });
+    });
+
+    describe("isPinnable", () => {
+        test.each(PinningUtils.PINNABLE_EVENT_TYPES)("should return true for pinnable event types", (eventType) => {
+            const event = makePinEvent({ type: eventType });
+            expect(PinningUtils.isPinnable(event)).toBe(true);
         });
 
         test("should return false for a redacted event", () => {
@@ -137,50 +147,65 @@ describe("PinningUtils", () => {
         });
     });
 
-    describe("canPinOrUnpin", () => {
-        test("should return false if pinning is disabled", () => {
-            // Disable feature pinning
-            jest.spyOn(SettingsStore, "getValue").mockReturnValue(false);
-            const event = makePinEvent();
+    describe("canPin & canUnpin", () => {
+        describe("canPin", () => {
+            test("should return false if pinning is disabled", () => {
+                // Disable feature pinning
+                jest.spyOn(SettingsStore, "getValue").mockReturnValue(false);
+                const event = makePinEvent();
 
-            expect(PinningUtils.canPinOrUnpin(matrixClient, event)).toBe(false);
+                expect(PinningUtils.canPin(matrixClient, event)).toBe(false);
+            });
+
+            test("should return false if event is not actionable", () => {
+                mockedIsContentActionable.mockImplementation(() => false);
+                const event = makePinEvent();
+
+                expect(PinningUtils.canPin(matrixClient, event)).toBe(false);
+            });
+
+            test("should return false if no room", () => {
+                matrixClient.getRoom = jest.fn().mockReturnValue(undefined);
+                const event = makePinEvent();
+
+                expect(PinningUtils.canPin(matrixClient, event)).toBe(false);
+            });
+
+            test("should return false if client cannot send state event", () => {
+                jest.spyOn(
+                    matrixClient.getRoom(roomId)!.getLiveTimeline().getState(EventTimeline.FORWARDS)!,
+                    "mayClientSendStateEvent",
+                ).mockReturnValue(false);
+                const event = makePinEvent();
+
+                expect(PinningUtils.canPin(matrixClient, event)).toBe(false);
+            });
+
+            test("should return false if event is not pinnable", () => {
+                const event = makePinEvent({ type: EventType.RoomCreate });
+
+                expect(PinningUtils.canPin(matrixClient, event)).toBe(false);
+            });
+
+            test("should return true if all conditions are met", () => {
+                const event = makePinEvent();
+
+                expect(PinningUtils.canPin(matrixClient, event)).toBe(true);
+            });
         });
 
-        test("should return false if event is not actionable", () => {
-            mockedIsContentActionable.mockImplementation(() => false);
-            const event = makePinEvent();
+        describe("canUnpin", () => {
+            test("should return false if event is not unpinnable", () => {
+                const event = makePinEvent({ type: EventType.RoomCreate });
 
-            expect(PinningUtils.canPinOrUnpin(matrixClient, event)).toBe(false);
-        });
+                expect(PinningUtils.canUnpin(matrixClient, event)).toBe(false);
+            });
 
-        test("should return false if no room", () => {
-            matrixClient.getRoom = jest.fn().mockReturnValue(undefined);
-            const event = makePinEvent();
+            test("should return true if all conditions are met", () => {
+                const event = makePinEvent();
 
-            expect(PinningUtils.canPinOrUnpin(matrixClient, event)).toBe(false);
-        });
-
-        test("should return false if client cannot send state event", () => {
-            jest.spyOn(
-                matrixClient.getRoom(roomId)!.getLiveTimeline().getState(EventTimeline.FORWARDS)!,
-                "mayClientSendStateEvent",
-            ).mockReturnValue(false);
-            const event = makePinEvent();
-
-            expect(PinningUtils.canPinOrUnpin(matrixClient, event)).toBe(false);
-        });
-
-        test("should return false if event is not pinnable", () => {
-            mockedCanPinEvent.mockReturnValue(false);
-            const event = makePinEvent();
-
-            expect(PinningUtils.canPinOrUnpin(matrixClient, event)).toBe(false);
-        });
-
-        test("should return true if all conditions are met", () => {
-            const event = makePinEvent();
-
-            expect(PinningUtils.canPinOrUnpin(matrixClient, event)).toBe(true);
+                expect(PinningUtils.canUnpin(matrixClient, event)).toBe(true);
+            });
         });
     });
 
@@ -245,6 +270,34 @@ describe("PinningUtils", () => {
                 roomId,
                 EventType.RoomPinnedEvents,
                 { pinned: ["$otherEventId"] },
+                "",
+            );
+        });
+    });
+
+    describe("userHasPinOrUnpinPermission", () => {
+        test("should return true if user can pin or unpin", () => {
+            expect(PinningUtils.userHasPinOrUnpinPermission(matrixClient, room)).toBe(true);
+        });
+
+        test("should return false if client cannot send state event", () => {
+            jest.spyOn(
+                matrixClient.getRoom(roomId)!.getLiveTimeline().getState(EventTimeline.FORWARDS)!,
+                "mayClientSendStateEvent",
+            ).mockReturnValue(false);
+
+            expect(PinningUtils.userHasPinOrUnpinPermission(matrixClient, room)).toBe(false);
+        });
+    });
+
+    describe("unpinAllEvents", () => {
+        it("should unpin all events in the given room", async () => {
+            await PinningUtils.unpinAllEvents(matrixClient, roomId);
+
+            expect(matrixClient.sendStateEvent).toHaveBeenCalledWith(
+                roomId,
+                EventType.RoomPinnedEvents,
+                { pinned: [] },
                 "",
             );
         });
