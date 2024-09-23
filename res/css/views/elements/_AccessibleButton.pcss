@@ -25,6 +25,7 @@ limitations under the License.
         &.mx_AccessibleButton_kind_primary,
         &.mx_AccessibleButton_kind_primary_outline,
         &.mx_AccessibleButton_kind_primary_sm,
+        &.mx_AccessibleButton_kind_primary_accent,
         &.mx_AccessibleButton_kind_link,
         &.mx_AccessibleButton_kind_link_accent,
         &.mx_AccessibleButton_kind_link_inline,
@@ -97,15 +98,23 @@ limitations under the License.
     &.mx_AccessibleButton_kind_icon_primary_outline,
     &.mx_AccessibleButton_kind_primary,
     &.mx_AccessibleButton_kind_primary_outline,
+    &.mx_AccessibleButton_kind_primary_accent,
     &.mx_AccessibleButton_kind_secondary {
         font-weight: var(--cpd-font-weight-semibold);
     }
 
     &.mx_AccessibleButton_kind_icon_primary,
+    &.mx_AccessibleButton_kind_primary_accent,
     &.mx_AccessibleButton_kind_primary {
         border: 1px solid var(--cpd-color-bg-action-primary-rest);
         color: var(--cpd-color-text-on-solid-primary);
         background-color: var(--cpd-color-bg-action-primary-rest);
+    }
+
+    &.mx_AccessibleButton_kind_primary_accent {
+        border: 1px solid var(--cpd-color-bg-accent-rest);
+        color: var(--cpd-color-text-on-solid-primary);
+        background-color: var(--cpd-color-bg-accent-rest);
     }
 
     &.mx_AccessibleButton_kind_icon_primary_outline,

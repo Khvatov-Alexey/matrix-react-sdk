@@ -30,6 +30,7 @@ export type AccessibleButtonKind =
     | "primary"
     | "primary_outline"
     | "primary_sm"
+    | "primary_accent"
     | "secondary"
     | "secondary_content"
     | "content_inline"

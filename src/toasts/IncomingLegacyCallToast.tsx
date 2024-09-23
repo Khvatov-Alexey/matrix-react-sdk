@@ -129,7 +129,7 @@ export default class IncomingLegacyCallToast extends React.Component<IProps, ISt
                         <AccessibleButton
                             className="mx_IncomingLegacyCallToast_button mx_IncomingLegacyCallToast_button_accept"
                             onClick={this.onAnswerClick}
-                            kind="primary"
+                            kind="primary_accent"
                         >
                             <span> {_t("action|accept")} </span>
                         </AccessibleButton>
