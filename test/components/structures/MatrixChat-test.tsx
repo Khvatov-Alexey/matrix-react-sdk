@@ -1,17 +1,9 @@
 /*
+Copyright 2024 New Vector Ltd.
 Copyright 2023 The Matrix.org Foundation C.I.C.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+SPDX-License-Identifier: AGPL-3.0-only OR GPL-3.0-only
+Please see LICENSE files in the repository root for full details.
 */
 
 import React, { ComponentProps } from "react";
@@ -63,6 +55,7 @@ import { MatrixClientPeg as peg } from "../../../src/MatrixClientPeg";
 import DMRoomMap from "../../../src/utils/DMRoomMap";
 import { ReleaseAnnouncementStore } from "../../../src/stores/ReleaseAnnouncementStore";
 import { DRAFT_LAST_CLEANUP_KEY } from "../../../src/DraftCleaner";
+import { UIFeature } from "../../../src/settings/UIFeature";
 
 jest.mock("matrix-js-sdk/src/oidc/authorize", () => ({
     completeAuthorizationCodeGrant: jest.fn(),
@@ -1468,6 +1461,44 @@ describe("<MatrixChat />", () => {
                 await sleep(10); // Modals take a few ms to appear
                 expect(document.body).toMatchSnapshot();
             });
+        });
+    });
+
+    describe("mobile registration", () => {
+        const getComponentAndWaitForReady = async (): Promise<RenderResult> => {
+            const renderResult = getComponent();
+            // wait for welcome page chrome render
+            await screen.findByText("powered by Matrix");
+
+            // go to mobile_register page
+            defaultDispatcher.dispatch({
+                action: "start_mobile_registration",
+            });
+
+            await flushPromises();
+
+            return renderResult;
+        };
+
+        const enabledMobileRegistration = (): void => {
+            jest.spyOn(SettingsStore, "getValue").mockImplementation((settingName: string) => {
+                if (settingName === "Registration.mobileRegistrationHelper") return true;
+                if (settingName === UIFeature.Registration) return true;
+            });
+        };
+
+        it("should render welcome screen if mobile registration is not enabled in settings", async () => {
+            await getComponentAndWaitForReady();
+
+            await screen.findByText("powered by Matrix");
+        });
+
+        it("should render mobile registration", async () => {
+            enabledMobileRegistration();
+
+            await getComponentAndWaitForReady();
+
+            expect(screen.getByTestId("mobile-register")).toBeInTheDocument();
         });
     });
 });
