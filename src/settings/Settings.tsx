@@ -11,6 +11,7 @@ import React, { ReactNode } from "react";
 import { UNSTABLE_MSC4133_EXTENDED_PROFILES } from "matrix-js-sdk/src/matrix";
 
 import { _t, _td, TranslationKey } from "../languageHandler";
+import DeviceIsolationModeController from "./controllers/DeviceIsolationModeController.ts";
 import {
     NotificationBodyEnabledController,
     NotificationsEnabledController,
@@ -36,6 +37,7 @@ import ServerSupportUnstableFeatureController from "./controllers/ServerSupportU
 import { WatchManager } from "./WatchManager";
 import { CustomTheme } from "../theme";
 import AnalyticsController from "./controllers/AnalyticsController";
+import FallbackIceServerController from "./controllers/FallbackIceServerController";
 
 export const defaultWatchManager = new WatchManager();
 
@@ -309,6 +311,16 @@ export const SETTINGS: { [setting: string]: ISetting } = {
         supportedLevelsAreOrdered: true,
         default: false,
     },
+    "feature_exclude_insecure_devices": {
+        isFeature: true,
+        labsGroup: LabGroup.Encryption,
+        controller: new DeviceIsolationModeController(),
+        displayName: _td("labs|exclude_insecure_devices"),
+        description: _td("labs|exclude_insecure_devices_description"),
+        supportedLevels: LEVELS_DEVICE_ONLY_SETTINGS_WITH_CONFIG_PRIORITISED,
+        supportedLevelsAreOrdered: true,
+        default: false,
+    },
     "useOnlyCurrentProfiles": {
         supportedLevels: LEVELS_ACCOUNT_SETTINGS,
         displayName: _td("settings|disable_historical_profile"),
@@ -566,18 +578,6 @@ export const SETTINGS: { [setting: string]: ISetting } = {
         displayName: _td("labs|ask_to_join"),
         supportedLevels: LEVELS_DEVICE_ONLY_SETTINGS_WITH_CONFIG_PRIORITISED,
         supportedLevelsAreOrdered: true,
-    },
-    "feature_new_room_decoration_ui": {
-        isFeature: true,
-        labsGroup: LabGroup.Rooms,
-        displayName: _td("labs|new_room_decoration_ui"),
-        supportedLevels: LEVELS_DEVICE_ONLY_SETTINGS_WITH_CONFIG,
-        default: true,
-        controller: new ReloadOnChangeController(),
-        betaInfo: {
-            title: _td("labs|new_room_decoration_ui_beta_title"),
-            caption: () => <p>{_t("labs|new_room_decoration_ui_beta_caption")}</p>,
-        },
     },
     "feature_notifications": {
         isFeature: true,
@@ -981,6 +981,7 @@ export const SETTINGS: { [setting: string]: ISetting } = {
         description: _td("settings|voip|enable_fallback_ice_server_description"),
         // This is a tri-state value, where `null` means "prompt the user".
         default: null,
+        controller: new FallbackIceServerController(),
     },
     "showImages": {
         supportedLevels: LEVELS_ACCOUNT_SETTINGS,
