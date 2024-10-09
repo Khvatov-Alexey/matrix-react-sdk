@@ -812,6 +812,7 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
                 // View the welcome or home page if we need something to look at
                 this.viewSomethingBehindModal();
                 break;
+            // todo: здесь похожее для поиска пользователя чата
             case "view_invite": {
                 const room = MatrixClientPeg.safeGet().getRoom(payload.roomId);
                 if (room?.isSpaceRoom()) {

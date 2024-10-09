@@ -17,7 +17,6 @@ import {
     Heading,
     IconButton,
     Link,
-    Search,
     Form,
 } from "@vector-im/compound-web";
 import FavouriteIcon from "@vector-im/compound-design-tokens/assets/web/icons/favourite";
@@ -73,6 +72,7 @@ import { useTransition } from "../../../hooks/useTransition";
 import { isVideoRoom as calcIsVideoRoom } from "../../../utils/video-rooms";
 import { usePinnedEvents } from "../../../hooks/usePinnedEvents";
 import { ReleaseAnnouncement } from "../../structures/ReleaseAnnouncement.tsx";
+import { AdvancedSearch } from "../../search/AdvancedSearch.tsx";
 
 interface IProps {
     room: Room;
@@ -339,10 +339,11 @@ const RoomSummaryCard: React.FC<IProps> = ({
             >
                 {onSearchChange && (
                     <Form.Root className="mx_RoomSummaryCard_search" onSubmit={(e) => e.preventDefault()}>
-                        <Search
+                        <AdvancedSearch
                             placeholder={_t("room|search|placeholder")}
                             name="room_message_search"
                             onChange={onSearchChange}
+                            onUserIconClick={ev => onClickUserIcon(ev)}
                             className="mx_no_textinput"
                             ref={searchInputRef}
                             autoFocus={focusRoomSearch}
@@ -437,5 +438,9 @@ const RoomSummaryCard: React.FC<IProps> = ({
         </BaseCard>
     );
 };
+
+function onClickUserIcon(e: React.MouseEvent<Element, MouseEvent>): void {
+    alert("click on user icon")
+}
 
 export default RoomSummaryCard;
